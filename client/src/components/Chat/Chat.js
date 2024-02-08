@@ -1,46 +1,57 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { user } from '../Login/Login'
-import{ io } from 'socket.io-client';
+import { io } from 'socket.io-client';
 import Message from '../Message/Message';
 import './Chat.css'
 import ReactScrollToBottom from 'react-scroll-to-bottom';
 
+let socket;
+
 const Chat = () => {
-  const [socketID, setSocketID] = useState("");
+  const [id, setId] = useState("");
+  const [messages, setMessages] = useState([]);
+
   const send = () => {
     const message = document.getElementById('chatMessage').value;
-    socket.emit("message",{socketID, message});
+    console.log("SocketID: ", id);
+    socket.emit("message", { message, id });
     document.getElementById('chatMessage').value = "";
   }
 
-  const socket = useMemo(() => io("http://localhost:3000",{
-    withCredentials: true
-  }),[]);
+  console.log(messages);
+  console.log("User: ", user);
 
   useEffect(() => {
+    socket = io("http://localhost:8080", {
+      transports: ["websocket"]    
+    });
+
     socket.on("connect", () => {
-      setSocketID(socket.id);
+      setId(socket.id);
       console.log("Connected");
     });
 
     socket.emit("joined", { user });
 
     socket.on("welcome", (data) => {
+      setMessages([...messages, data]);
       console.log(data);
     })
 
     socket.on("userJoined", (data) => {
-      console.log(data.user,data.message);
+      setMessages([...messages, data]);
+      console.log(data.user, data.message);
     })
 
     socket.on("left", (data) => {
-      console.log(data.user,data.message);
+      setMessages([...messages, data]);
+      console.log(data.user, data.message);
     })
 
-    // socket.on("receive-message", (data) => {
-    //   console.log(data);
-    //   setMessages((messages) => [...messages, data]);
-    // })
+    socket.on("receive-message", (data) => {
+      console.log(data);
+      setMessages((messages) => [...messages, data]);
+    })
 
     return () => {
       socket.emit("disconnect");
@@ -49,32 +60,37 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
-    socket.on("sendMessage",(data) => {
+    socket.on("sendMessage", (data) => {
+      setMessages([...messages, data]);
       console.log(data);
     })
-  
+
     return () => {
-      
+      socket.off();
     }
-  }, [])
-  
+  }, [messages])
+
+
 
   return (
     <div className='page'>
-        <div className='container'>
-            <div className='header'></div>
-            <ReactScrollToBottom className='chatBody'>
-              <Message message={"hello"} />
-              <Message message={"hello"} />
-              <Message message={"hello"} />
-              <Message message={"hello"} />
-              <Message message={"hello"} />
-            </ReactScrollToBottom>
-            <div className='inputBox'>
-              <input type='text' id='chatMessage'></input>
-              <button className='sendBtn' onClick={send}>Send</button>
-            </div>
+      <div className='container'>
+        <div className='header'>
+          <h3>CHIT-CHAT</h3>
+          <p>x</p>
         </div>
+        <ReactScrollToBottom className='chatBody'>
+          {
+            messages.map((item, index) =>
+              <Message key={index} user={item.id === id ? '' : item.user} message={item.message} person={item.id === id ? "right" : "left"} />
+            )
+          }
+        </ReactScrollToBottom>
+        <div className='inputBox'>
+          <input type='text' id='chatMessage' onKeyDown={(event) => event.key === 'Enter' ? send() : null}></input>
+          <button className='sendBtn' onClick={send}>Send</button>
+        </div>
+      </div>
     </div>
   )
 }

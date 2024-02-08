@@ -21,20 +21,38 @@
 }
 
 .header {
-    background-color: crimson;
+    background-color: rgb(76, 78, 80);
     height: 15%;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header > h3 {
+    color: white;
+    margin: 2vmax;
+}
+
+.header > p {
+    margin: 2vmax;
+    font-size: larger;
+    color: white;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.header > p:hover {
+    transform: scale(1.2);
 }
 
 .chatBody {
     height: 70%;
-    border: 1px solid black;
     width: 100%;
 }
 
 .inputBox {
     height: 15%;
-    border: 1px solid black;
     width: 100%;
     display: flex;;
 }
@@ -44,12 +62,13 @@
     border: none;
     outline: none;
     font-size: large;
+    border-top: 1px solid black;
     padding: 8px;
 }
 
 .sendBtn {
     width: 20%;
-    background-color: crimson;
+    background-color: rgb(67, 187, 113);
     color: white;
     font-size: large;
     border: none;
@@ -60,6 +79,6 @@
 }
 
 .sendBtn:hover {
-    background-color: rgb(122, 16, 38);
+    background-color: rgb(49, 122, 77);
 }
 

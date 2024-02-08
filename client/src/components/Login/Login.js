@@ -12,11 +12,11 @@ const sendUser = () => {
 const Login = () => {
   const [name, setName] = useState("");
   return (
-    <div className='container' >
+    <div className='loginBox' >
         <div className='form' >
-            <h1 className='header'>Chit-Chat</h1>
+            <h1 className='heading'>Chit-Chat</h1>
             <input id='loginInput' type='text' placeholder='Enter Your Name' value={name} onChange={(e) => setName(e.target.value)}/>
-            <Link to="/chat" onClick={(e) => !name ? e.preventDefault() : null}><button className='loginBtn' onClick={sendUser}>Login</button></Link>
+            <Link to="/chat" onClick={(e) => !name ? e.preventDefault() : null}><button className='loginBtn' onClick={sendUser}>Get Started</button></Link>
         </div>
         
     </div>
