@@ -87,7 +87,7 @@ const Chat = () => {
           }
         </ReactScrollToBottom>
         <div className='inputBox'>
-          <input type='text' id='chatMessage' onKeyDown={(event) => event.key === 'Enter' ? send() : null}></input>
+          <input type='text' id='chatMessage' onKeyDown={(event) => event.key === 'Enter' ? send() : null} placeholder='Message'></input>
           <button className='sendBtn' onClick={send}>Send</button>
         </div>
       </div>
