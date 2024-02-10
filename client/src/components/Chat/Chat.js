@@ -22,7 +22,7 @@ const Chat = () => {
   console.log("User: ", user);
 
   useEffect(() => {
-    socket = io("http://localhost:8080", {
+    socket = io( process.env.SERVER_URL , {
       transports: ["websocket"]    
     });
 
