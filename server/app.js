@@ -5,8 +5,8 @@ import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-const port = 8080;
-const secretKeyJWT = "it's a secret";
+const port = process.env.PORT;
+const secretKeyJWT = process.env.SECRET_KEY;
 
 const app = express();
 const server = createServer(app);
