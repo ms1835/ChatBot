@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { user } from '../Login/Login'
 import { io } from 'socket.io-client';
 import Message from '../Message/Message';
@@ -57,7 +57,7 @@ const Chat = () => {
       socket.emit("disconnect");
       socket.off();
     }
-  }, []);
+  });
 
   useEffect(() => {
     socket.on("sendMessage", (data) => {
