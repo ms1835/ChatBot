@@ -13,7 +13,7 @@ import Message from "./models/Messages.js";
 
 dotenv.config();
 
-mongoose.connect("mongodb+srv://ms1835:mayank8024@cluster0.py6wh.mongodb.net/ChatBot?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DB_URL, {
     
 })
 .then(() => {
