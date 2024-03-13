@@ -15,7 +15,7 @@ const Dashboard = () => {
     console.log("Conversations: ",conversations);
 
     useEffect(() => {
-        setSocket(io('http://localhost:8000'));
+        setSocket(io(process.env.REACT_APP_SERVER_URL));
     },[])
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const Dashboard = () => {
 
     const fetchMessages = async(conversationId, receiver) => {
         try{
-            const res = await fetch(`http://localhost:8080/api/message/${conversationId}?senderId=${user.id}&&receiverId=${receiver?.receiverId}`, {
+            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/message/${conversationId}?senderId=${user.id}&&receiverId=${receiver?.receiverId}`, {
                 method: "GET",
                 headers: {
                     'Content-Type': "Application/json"
@@ -62,7 +62,7 @@ const Dashboard = () => {
         e.preventDefault();
         console.log("Send message: ",message, messages?.conversationId, user?.id, messages?.receiver?.receiverId)
         try{
-            const res = await fetch("http://localhost:8080/api/message", {
+            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/message`, {
                 method: "POST",
                 headers: {
                     'Content-Type': "Application/json"
@@ -86,7 +86,7 @@ const Dashboard = () => {
         const loggedInUser = JSON.parse(localStorage.getItem('user:details'));
         console.log("User: ",loggedInUser);
 
-        const res = await fetch(`http://localhost:8080/api/conversations/${loggedInUser.id}`, {
+        const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/conversations/${loggedInUser.id}`, {
             method: "GET",
             headers: {
                 'Content-Type': "Application/json"
@@ -103,7 +103,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchUsers = async() => {
-            const res = await fetch(`http://localhost:8080/api/users/${user.id}`, {
+            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/${user.id}`, {
                 method: "GET",
                 headers: {
                     'Content-Type': "Application/json"
