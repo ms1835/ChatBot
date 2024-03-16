@@ -56,7 +56,7 @@ const SignIn = () => {
                     </div>
                     <div className="flex justify-center">
                         <p className="text-sm">Don't have an account?</p>
-                        <span className="text-sm ml-2 text-blue-500 underline cursor-pointer" onClick={() => navigate('/auth/sign_up')}>Sign Up</span>
+                        <span className="text-sm ml-2 text-blue-500 underline cursor-pointer" onClick={() => navigate('/api/register')}>Sign Up</span>
                     </div>
                 </form>
             </div>

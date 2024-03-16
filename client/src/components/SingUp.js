@@ -60,7 +60,7 @@ const SignUp = () => {
                     </div>
                     <div className="flex justify-center">
                         <p className="text-sm">Already have an account?</p>
-                        <span className="text-sm ml-2 text-blue-500 underline cursor-pointer" onClick={() => navigate('/auth/sign_in')}>Sign In</span>
+                        <span className="text-sm ml-2 text-blue-500 underline cursor-pointer" onClick={() => navigate('/api/login')}>Sign In</span>
                     </div>
                 </form>
             </div>

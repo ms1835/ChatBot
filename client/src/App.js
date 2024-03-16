@@ -10,9 +10,9 @@ const App = () => {
     const isLoggedIn = localStorage.getItem('user:token') != null;
 
     if(!isLoggedIn && auth){
-      return <Navigate to={'/auth/sign_in'} />
+      return <Navigate to={'/api/login'} />
     }
-    else if(isLoggedIn && ['/auth/sign_in', '/auth/sign_up'].includes(window.location.pathname)){
+    else if(isLoggedIn && ['/api/login', '/api/register'].includes(window.location.pathname)){
       return <Navigate to={'/'} />
     }
 
@@ -21,12 +21,12 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/auth/sign_in" element={
+      <Route path="/api/login" element={
         <ProtectedRoute>
           <SignIn />
         </ProtectedRoute>
       } />
-      <Route path="/auth/sign_up" element={
+      <Route path="/api/register" element={
         <ProtectedRoute>
          <SignUp />
         </ProtectedRoute>
