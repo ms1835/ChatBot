@@ -20,7 +20,7 @@ const SignIn = () => {
             const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/login`, {
                 method: "POST",
                 headers: {
-                    'COntent-Type': "Application/json"
+                    'Content-Type': "Application/json"
                 },
                 body: JSON.stringify(formData)
             });

@@ -30,7 +30,11 @@ const server = createServer(app);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URI,
+    methods: ["GET", "POST"],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 const io = new Server(server, {
     cors: {
