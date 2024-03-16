@@ -37,9 +37,9 @@ const SignIn = () => {
 
     return (
         <div className="h-screen flex items-center justify-center">
-            <div className="bg-red-100 border border-2 border-gray-400 border-round p-24 w-full sm:w-1/2 lg:w-1/3 m-2 shadow-lg">
+            <div className="bg-stone-400 border border-2 border-gray-400 rounded-lg p-24 w-full sm:w-1/2 lg:w-1/3 m-2 shadow-lg">
                 <div className="flex flex-col items-center mb-8">
-                    <h1 className="text-2xl font-bold">Sign In</h1>
+                    <h1 className="text-3xl font-bold">Sign In</h1>
                     <p className="text-lg">to continue to Chit-Chat</p>
                 </div>
                 <form className="" onSubmit={handleSubmit}>
@@ -56,7 +56,7 @@ const SignIn = () => {
                     </div>
                     <div className="flex justify-center">
                         <p className="text-sm">Don't have an account?</p>
-                        <span className="text-sm ml-2 text-blue-500 underline cursor-pointer" onClick={() => navigate('/api/register')}>Sign Up</span>
+                        <span className="text-sm ml-2 text-blue-800 underline cursor-pointer" onClick={() => navigate('/api/register')}>Sign Up</span>
                     </div>
                 </form>
             </div>
