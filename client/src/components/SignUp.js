@@ -20,7 +20,7 @@ const SignUp = () => {
             const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/register`, {
                 method: "POST",
                 headers: {
-                    'COntent-Type': "Application/json"
+                    'Content-Type': "Application/json"
                 },
                 body: JSON.stringify(formData)
             });
@@ -28,19 +28,19 @@ const SignUp = () => {
             if(resData.token){
                 localStorage.setItem('user:token', resData.token);
                 localStorage.setItem('user:details', JSON.stringify(resData.user));
-                navigate('/');
             }
+            navigate('/');
         } catch(error){
             console.log(error);
         }
     }
 
     return (
-        <div className="h-screen flex items-center justify-center">
-            <div className="bg-stone-400 border border-2 border-gray-400 rounded-lg p-24 w-full sm:w-1/2 lg:w-1/3 m-2 shadow-lg">
+        <div className="h-screen flex items-center justify-center bg-neutral-200">
+            <div className="bg-slate-200 border border-2 border-slate-400 rounded-lg p-24 w-full sm:w-1/2 lg:w-1/3 m-2 shadow-2xl">
                 <div className="flex flex-col items-center mb-8">
-                    <h1 className="text-3xl font-bold">Sign Up</h1>
-                    <p className="text-lg">to explore Chit-Chat</p>
+                    <h1 className="text-3xl font-medium">Sign up to Chit-Chat</h1>
+                    {/* <p className="text-lg">to explore Chit-Chat</p> */}
                 </div>
                 <form className="" onSubmit={handleSubmit}>
                 <div className="flex flex-col gap-2 mb-3">

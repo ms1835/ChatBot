@@ -36,16 +36,16 @@ const SignIn = () => {
     }
 
     return (
-        <div className="h-screen flex items-center justify-center">
-            <div className="bg-stone-400 border border-2 border-gray-400 rounded-lg p-24 w-full sm:w-1/2 lg:w-1/3 m-2 shadow-lg">
+        <div className="h-screen flex items-center justify-center bg-neutral-200">
+            <div className="bg-slate-200 border border-2 border-slate-400 rounded-lg p-24 w-full sm:w-1/2 lg:w-1/3 m-2 shadow-2xl">
                 <div className="flex flex-col items-center mb-8">
-                    <h1 className="text-3xl font-bold">Sign In</h1>
-                    <p className="text-lg">to continue to Chit-Chat</p>
+                    <h1 className="text-3xl font-medium">Log in to Chit-Chat</h1>
+                    {/* <p className="text-lg">to continue to Chit-Chat</p> */}
                 </div>
                 <form className="" onSubmit={handleSubmit}>
                     <div className="flex flex-col gap-2 mb-3">
                         <label className="text-lg font-semibold">Email</label>
-                        <input className="rounded-lg py-3 focus:ring-0 outline-none px-4 text-lg" type="text" name="email" value={formData.email} onChange={handleChange} required></input>
+                        <input className="rounded-lg py-3 focus:ring-0 outline-none px-4 text-lg" type="email" name="email" value={formData.email} onChange={handleChange} required></input>
                     </div>
                     <div className="flex flex-col gap-2 mb-3">
                         <label className="text-lg font-semibold">Password</label>

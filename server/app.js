@@ -153,7 +153,7 @@ app.get('/api/conversations/:userId', async(req,res) => {
             const user = await Users.findById(receiverId);
             return {user: {receiverId: user._id, email: user.email, name: user.name}, conversationId: conversation._id}
         }))
-        console.log(await conversationUserData)
+        // console.log(await conversationUserData)
         res.status(200).json(await conversationUserData);
     } catch(error){
         console.log(error);
