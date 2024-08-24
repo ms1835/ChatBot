@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import SignIn from './components/SignIn';
-import SignUp from './components/SingUp';
+import SignUp from './components/SignUp';
 import Dashboard from './components/Dashboard';
 
 const App = () => {
@@ -18,11 +18,6 @@ const App = () => {
   }
 
   return (
-    // <Routes>
-    //   <Route path='/api/login' element={<SignIn />} />
-    //   <Route path='/api/register' element={<SignUp />} />
-    //   <Route path='/' element={<Dashboard />} />
-    // </Routes>
     <Routes>
       <Route path="/api/login" element={
         <ProtectedRoute>
