@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SignIn = () => {
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({email: '', password:''});
+    const [formData, setFormData] = useState({email: `${process.env.REACT_APP_GUEST_USER}`, password: `${process.env.REACT_APP_GUEST_PWD}`});
 
     const handleChange = (event) => {
         const {name, value} = event.target;
